@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //ex1
+    const persons = [
+
+        { name: "MONCEF", age: 13 },
+        { name: "BAHIJA", age: 23 },
+        { name: "ALA", age: 18 },
+
+    ];
+
+    let newPersons = persons.map((person) => {
+        if (person.age >= 18) {
+            person.status = 'majeur'
+        } else {
+            person.status = 'mineur'
+        }
+        return person
+    });
+    console.log(newPersons);
+
+    //ex2
+    const str1 = 'ahmed&ferah-moez&saadi-fadhel&gadihi';
+
+
+    function split(str, carac) {
+        let table = [];
+        let vide = ''
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] != carac) {
+                vide += str[i];
+            } else {
+                table.push(vide)
+                vide = ''
+            }
+        }
+        table.push(vide)
+        return table
+    }
+    let strResultat = str1.split('-').map(nomprenom => {
+        let [firstname, lastname] = nomprenom.split('&')
+        return {
+            firstname: firstname,
+            lastname: lastname
+        }
+    })
+    console.log(strResultat);
+
+    //ex3
+    const users = [
+        { name: "sarah", comment: "j'aime ce poste <3" },
+        { name: "monya", comment: "le poste est null :( " },
+        { name: "carlos", comment: "salut l'algérie" }
+    ]
+    function ContainsEmoji({ comment, name }) {
+        if (comment.includes('<3'))
+            return { name, etat: 'heureux' }
+        else if (comment.includes(':('))
+            return { name, etat: 'triste' }
+        else return { name, etat: 'neutre' }
+    }
+
+    const moodDetect = (liste) => liste.map(ContainsEmoji)
+    console.log(moodDetect(users));
+
+    //ex4
+    const etudiants = [
+        { name: "sarah", note: undefined },
+        { name: "monya", note: 7 },
+        { name: "carlos", note: 13 },
+        { name: "fadhel", note: 18 },
+    ]
+    const failedStudent = (liste) => {
+        let filtredList = liste.filter(etudiant => etudiant.note)
+        console.log(filtredList)
+
+
+
+    }
+    console.log(failedStudent(etudiants));
+
+
+</script>
+
+</html>
